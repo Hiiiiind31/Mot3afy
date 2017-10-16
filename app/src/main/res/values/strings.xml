@@ -1,3 +1,25 @@
 <resources>
     <string name="app_name">Mot3afy</string>
+
+    <string name="title_activity_welcome">Home Screen</string>
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="signin">Sign in</string>
+    <string name="Google_sign_in">Google Signin</string>
+    <string name="sign_in">______Sign in______</string>
+
+    <string name="slide_1_title">Hello Food!</string>
+    <string name="slide_1_desc">The easiest way to order food from your favourite restaurant!</string>
+
+    <string name="slide_3_title">Movie Tickets</string>
+    <string name="slide_3_desc">Book movie tickets for your family and friends!</string>
+
+    <string name="slide_2_title">Yes you can</string>
+    <string name="slide_2_desc">Think good for Allah!</string>
+
+    <string name="slide_4_title">Lets go</string>
+    <string name="slide_4_desc">Hurry up and join to us!</string>
+
+    <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
+    <string name="play_again">Play Again</string>
 </resources>
