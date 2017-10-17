@@ -3,7 +3,15 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="login_activity">#69F0AE</color>
+
+    <color name="G_primary_color">#aeea00</color>
+    <color name="G_second_color">#79b700</color>
+    <color name="G_lighter_color">#e4ff54</color>
+
+
+    <color name="Y_primary_color">#ffff00</color>
+    <color name="Y_second_color">#c7cc00</color>
+    <color name="Y_lighter_color">#ffff5a</color>
 
     <!-- Screens background color-->
     <color name="bg_screen1">#00C853</color>
