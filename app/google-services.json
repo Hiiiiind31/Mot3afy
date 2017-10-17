@@ -1,0 +1,86 @@
+{
+  "project_info": {
+    "project_number": "201359228207",
+    "firebase_url": "https://mot3afy-ce7fb.firebaseio.com",
+    "project_id": "mot3afy-ce7fb",
+    "storage_bucket": "mot3afy-ce7fb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:201359228207:android:ba29893f9cbee5b2",
+        "android_client_info": {
+          "package_name": "com.example.hindahmed.anti_cancer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "201359228207-15puitavlv0hqqt4hd37avm9mqlr8h1f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAM_r7ndqkPonOJ1Y0BJBHtVYyJ2ld3h-M"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:201359228207:android:d58f10457b3959c5",
+        "android_client_info": {
+          "package_name": "com.mot3afy.mot3afy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "201359228207-s5i2cksfbrl5q80teobpvle4m54iffqa.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mot3afy.mot3afy",
+            "certificate_hash": "d12e0a7c5276bda9921d58b72a8d134b9fb2df79"
+          }
+        },
+        {
+          "client_id": "201359228207-15puitavlv0hqqt4hd37avm9mqlr8h1f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAM_r7ndqkPonOJ1Y0BJBHtVYyJ2ld3h-M"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "201359228207-15puitavlv0hqqt4hd37avm9mqlr8h1f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

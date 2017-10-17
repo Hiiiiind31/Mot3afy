@@ -1,4 +1,4 @@
-package com.mot3afy.mot3afy;
+package com.mot3afy.mot3afy.Activities;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -13,6 +13,10 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.mot3afy.mot3afy.MyViewPagerAdapter;
+import com.mot3afy.mot3afy.PrefManager;
+import com.mot3afy.mot3afy.R;
 
 public class Activity_Welcome extends AppCompatActivity {
 

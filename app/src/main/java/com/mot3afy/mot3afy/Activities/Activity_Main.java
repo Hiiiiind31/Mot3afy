@@ -1,4 +1,4 @@
-package com.mot3afy.mot3afy;
+package com.mot3afy.mot3afy.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,10 +11,9 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 
-import static android.provider.Telephony.TextBasedSmsColumns.SUBJECT;
+import com.mot3afy.mot3afy.R;
 
 public class Activity_Main extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {

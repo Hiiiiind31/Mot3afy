@@ -12,7 +12,7 @@ import static android.content.Context.LAYOUT_INFLATER_SERVICE;
  * Created by Hind on 10/16/2017.
  */
 
-class MyViewPagerAdapter extends PagerAdapter {
+public class MyViewPagerAdapter extends PagerAdapter {
 
     private LayoutInflater layoutInflater;
     private int[] layouts ;
