@@ -19,7 +19,9 @@
         <activity
             android:name=".Activity_Main"
             android:label="@string/title_activity__main"
-            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity android:name=".Activity_slideshow" />
+        <activity android:name=".Activity_Favourite"></activity>
     </application>
 
 </manifest>

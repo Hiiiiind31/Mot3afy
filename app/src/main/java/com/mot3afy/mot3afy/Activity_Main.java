@@ -1,5 +1,6 @@
 package com.mot3afy.mot3afy;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -12,6 +13,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import static android.provider.Telephony.TextBasedSmsColumns.SUBJECT;
 
 public class Activity_Main extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -61,13 +64,27 @@ public class Activity_Main extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_slideshow) {
+            startActivity(new Intent(Activity_Main.this,Activity_slideshow.class));
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.nav_fav) {
+            startActivity(new Intent(Activity_Main.this,Activity_Favourite.class));
 
         } else if (id == R.id.nav_share) {
 
-        } else if (id == R.id.nav_send) {
+            Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+            sharingIntent.setType("text/plain");
+            sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "APP NAME (Open it in Google Play Store to Download the Application)");
 
+            sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, "https://play.google.com/store/apps/details?id=com.whatsapp");
+            startActivity(Intent.createChooser(sharingIntent, "Share via"));
+
+        } else if (id == R.id.nav_send) {
+            Intent intent = new Intent(Intent.ACTION_SEND);
+
+            intent.putExtra(Intent.EXTRA_EMAIL,"Hind_Ahmed31@hotmail.com");
+            intent.putExtra(Intent.EXTRA_SUBJECT, "Feedback");
+            intent.setType("message/rfc822");
+            startActivity(Intent.createChooser(intent, "Select Email Sending App :"));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
