@@ -1,10 +1,13 @@
 package com.mot3afy.mot3afy.Activities;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,11 +16,18 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.mot3afy.mot3afy.Post;
 import com.mot3afy.mot3afy.PrefManager;
 import com.mot3afy.mot3afy.R;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import static com.mot3afy.mot3afy.Activities.Activity_Welcome.prefManager;
 
@@ -29,6 +39,7 @@ public class Activity_Main extends AppCompatActivity
     private ImageView user_image;
    // private PrefManager prefManager;
     String User_email, User_id, User_name;
+    DatabaseReference mFirebaseDatabase_Posts ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,12 +53,16 @@ public class Activity_Main extends AppCompatActivity
         User_id = prefManager.getUser_id();
         User_name = prefManager.getUser_name();
         Log.d("data",User_id+User_name+User_email);
+
+        mFirebaseDatabase_Posts = FirebaseDatabase.getInstance().getReference("Posts");
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+                Write_new_post();
             }
         });
 
@@ -67,6 +82,73 @@ public class Activity_Main extends AppCompatActivity
         user_email.setText(User_email);
         user_image.setImageResource(R.drawable.muscle);
     }
+
+
+
+
+    private void Write_new_post() {
+
+        // get prompts.xml view
+        LayoutInflater add_design_Xml = LayoutInflater.from(this);
+        View promptsView = add_design_Xml.inflate(R.layout.add_post_design, null);
+
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                this);
+
+        // set prompts.xml to alertdialog builder
+        alertDialogBuilder.setView(promptsView);
+
+        final EditText userInput = (EditText) promptsView
+                .findViewById(R.id.editTextDialogUserInput);
+        final EditText hashtag = (EditText) promptsView
+                .findViewById(R.id.Hashtag);
+
+        // set dialog message
+        alertDialogBuilder
+                .setCancelable(false)
+                .setTitle("Share your story")
+                .setIcon(R.drawable.muscle)
+                .setPositiveButton("Post",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,int id) {
+                                // get user input and set it to result
+                                // edit text
+                                String title = hashtag.getText().toString();
+                                String body_of_post = userInput.getText().toString()+"#"+hashtag.getText().toString();
+                                writeNewPost(User_id,User_name,title,body_of_post,0);
+                            }
+                        })
+                .setNegativeButton("Cancel",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,int id) {
+                                dialog.cancel();
+                            }
+                        });
+
+        // create alert dialog
+        AlertDialog alertDialog = alertDialogBuilder.create();
+
+        // show it
+        alertDialog.show();
+
+    }
+
+
+    private void writeNewPost(String userId, String username, String title, String body, int fav) {
+        // Create new post at /user-posts/$userid/$postid and at
+        // /posts/$postid simultaneously
+        String key = mFirebaseDatabase_Posts.push().getKey();
+        Post post = new Post(userId, username, title, body,fav);
+        Map<String, Object> postValues = post.toMap();
+
+        Map<String, Object> childUpdates = new HashMap<>();
+        childUpdates.put("/posts/" + key, postValues);
+        childUpdates.put("/user-posts/" + userId + "/" + key, postValues);
+        childUpdates.put("/user-Hashtag/" + title + "/" + key, postValues);
+
+        mFirebaseDatabase_Posts.updateChildren(childUpdates);
+    }
+
 
     @Override
     public void onBackPressed() {
