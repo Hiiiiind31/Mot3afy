@@ -6,7 +6,6 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.Auth;
@@ -22,7 +21,10 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.mot3afy.mot3afy.R;
+import com.mot3afy.mot3afy.User;
 
 
 public class Activity_Login extends AppCompatActivity {
@@ -34,6 +36,8 @@ public class Activity_Login extends AppCompatActivity {
     private GoogleSignInOptions googleSignInOptions;
     // Google Sign In button .
     com.google.android.gms.common.SignInButton signInButton;
+    private DatabaseReference mDatabase;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +46,9 @@ public class Activity_Login extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         signInButton = (com.google.android.gms.common.SignInButton) findViewById(R.id.sign_in_button);
+
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+
 
         // Creating and Configuring Google Sign In object.
         googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -126,7 +133,16 @@ public class Activity_Login extends AppCompatActivity {
         Toast.makeText(Activity_Login.this, "id" + currentUser.getUid() + "///name" + currentUser.getDisplayName(),
                 Toast.LENGTH_SHORT).show();
 
+        writeNewUser(currentUser.getUid(),currentUser.getDisplayName(),currentUser.getEmail());
+
     }
+
+    private void writeNewUser(String userId, String name, String email) {
+        User user = new User(name, email);
+        mDatabase.child("Users").child(userId).setValue(user);
+        startActivity(new Intent(Activity_Login.this,Activity_Main.class));
+    }
+
 
     public void main(View v) {
         startActivity(new Intent(Activity_Login.this, Activity_Main.class));

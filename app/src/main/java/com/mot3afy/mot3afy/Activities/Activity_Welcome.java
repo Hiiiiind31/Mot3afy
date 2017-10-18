@@ -14,6 +14,8 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.mot3afy.mot3afy.MyViewPagerAdapter;
 import com.mot3afy.mot3afy.PrefManager;
 import com.mot3afy.mot3afy.R;
@@ -34,10 +36,19 @@ public class Activity_Welcome extends AppCompatActivity {
 
         // Checking for first time launch - before calling setContentView()
         prefManager = new PrefManager(this);
-        if (!prefManager.isFirstTimeLaunch()) {
-            launchHomeScreen();
-            finish();
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user == null) {
+            // no User is signed in
+            if (!prefManager.isFirstTimeLaunch()) {
+                launchHomeScreen();
+                finish();
+            }
+        } else {
+            // No user is signed in
+            startActivity(new Intent(Activity_Welcome.this,Activity_Main.class));
         }
+
 
         // Making notification bar transparent
         if (Build.VERSION.SDK_INT >= 21) {
