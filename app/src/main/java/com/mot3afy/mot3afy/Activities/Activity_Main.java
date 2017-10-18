@@ -18,20 +18,29 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.mot3afy.mot3afy.Post;
+import com.mot3afy.mot3afy.Post_Adapter;
 import com.mot3afy.mot3afy.PrefManager;
 import com.mot3afy.mot3afy.R;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static com.mot3afy.mot3afy.Activities.Activity_Welcome.prefManager;
 
 public class Activity_Main extends AppCompatActivity
+
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private TextView user_name;
@@ -40,6 +49,10 @@ public class Activity_Main extends AppCompatActivity
    // private PrefManager prefManager;
     String User_email, User_id, User_name;
     DatabaseReference mFirebaseDatabase_Posts ;
+    private ListView listView ;
+    private List<Post> post_s = new ArrayList<>();
+    private Post_Adapter post_adapter ;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +66,11 @@ public class Activity_Main extends AppCompatActivity
         User_id = prefManager.getUser_id();
         User_name = prefManager.getUser_name();
         Log.d("data",User_id+User_name+User_email);
+
+
+
+
+        listView = (ListView) findViewById(R.id.List_of_all_posts);
 
         mFirebaseDatabase_Posts = FirebaseDatabase.getInstance().getReference("Posts");
 
@@ -81,9 +99,43 @@ public class Activity_Main extends AppCompatActivity
         user_name.setText(User_name);
         user_email.setText(User_email);
         user_image.setImageResource(R.drawable.muscle);
+
+
+        ///
+        mFirebaseDatabase_Posts.child("posts").addValueEventListener(new ValueEventListener() {
+            long childrenCount;
+            Object value;
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Post postss = null;
+                post_s.clear();
+//                post_adapter.notifyDataSetChanged();
+                for (DataSnapshot noteDataSnapshot : dataSnapshot.getChildren()) {
+                     postss = noteDataSnapshot.getValue(Post.class);
+//                    childrenCount = noteDataSnapshot.getChildrenCount();
+//                    value = noteDataSnapshot.getValue();
+                    post_s.add(postss);
+                }
+                int size = post_s.size();
+                update_posts();
+                Toast.makeText(Activity_Main.this, childrenCount + "//" + value + "", Toast.LENGTH_LONG).show();
+                Toast.makeText(Activity_Main.this, size + "", Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
     }
 
+    private void update_posts() {
+         post_adapter = new Post_Adapter(this, post_s);
+        listView.setAdapter(post_adapter);
 
+    }
 
 
     private void Write_new_post() {
@@ -92,8 +144,7 @@ public class Activity_Main extends AppCompatActivity
         LayoutInflater add_design_Xml = LayoutInflater.from(this);
         View promptsView = add_design_Xml.inflate(R.layout.add_post_design, null);
 
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
-                this);
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
 
         // set prompts.xml to alertdialog builder
         alertDialogBuilder.setView(promptsView);
@@ -106,7 +157,7 @@ public class Activity_Main extends AppCompatActivity
         // set dialog message
         alertDialogBuilder
                 .setCancelable(false)
-                .setTitle("Share your story")
+                .setTitle("Share your story..")
                 .setIcon(R.drawable.muscle)
                 .setPositiveButton("Post",
                         new DialogInterface.OnClickListener() {

@@ -25,7 +25,8 @@ public class Post {
         this.starCount = starCount;
     }
 
-
+    public Post() {
+    }
 
     @Exclude
     public Map<String, Object> toMap() {
@@ -36,5 +37,45 @@ public class Post {
         result.put("body", body);
         result.put("starCount", starCount);
         return result;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getBody() {
+        return body;
+    }
+
+    public void setBody(String body) {
+        this.body = body;
+    }
+
+    public int getStarCount() {
+        return starCount;
+    }
+
+    public void setStarCount(int starCount) {
+        this.starCount = starCount;
     }
 }
