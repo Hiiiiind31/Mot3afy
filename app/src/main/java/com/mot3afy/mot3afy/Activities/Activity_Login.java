@@ -23,8 +23,11 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.mot3afy.mot3afy.PrefManager;
 import com.mot3afy.mot3afy.R;
 import com.mot3afy.mot3afy.User;
+
+import static com.mot3afy.mot3afy.Activities.Activity_Welcome.prefManager;
 
 
 public class Activity_Login extends AppCompatActivity {
@@ -37,6 +40,7 @@ public class Activity_Login extends AppCompatActivity {
     // Google Sign In button .
     com.google.android.gms.common.SignInButton signInButton;
     private DatabaseReference mDatabase;
+    //private PrefManager prefManager ;
 
 
     @Override
@@ -49,6 +53,7 @@ public class Activity_Login extends AppCompatActivity {
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
+        //prefManager = new PrefManager(this);
 
         // Creating and Configuring Google Sign In object.
         googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -137,10 +142,12 @@ public class Activity_Login extends AppCompatActivity {
 
     }
 
-    private void writeNewUser(String userId, String name, String email) {
-        User user = new User(name, email);
+    private void writeNewUser(String userId, String userName, String userEmail) {
+        User user = new User(userName, userEmail);
         mDatabase.child("Users").child(userId).setValue(user);
+        prefManager.setUserData(userId,userName,userEmail);
         startActivity(new Intent(Activity_Login.this,Activity_Main.class));
+
     }
 
 

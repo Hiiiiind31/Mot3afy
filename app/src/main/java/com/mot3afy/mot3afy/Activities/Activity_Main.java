@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -12,11 +13,22 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.mot3afy.mot3afy.PrefManager;
 import com.mot3afy.mot3afy.R;
+
+import static com.mot3afy.mot3afy.Activities.Activity_Welcome.prefManager;
 
 public class Activity_Main extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private TextView user_name;
+    private TextView user_email;
+    private ImageView user_image;
+   // private PrefManager prefManager;
+    String User_email, User_id, User_name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +37,11 @@ public class Activity_Main extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        prefManager = new PrefManager(this);
+        User_email = prefManager.getUser_email();
+        User_id = prefManager.getUser_id();
+        User_name = prefManager.getUser_name();
+        Log.d("data",User_id+User_name+User_email);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,6 +59,13 @@ public class Activity_Main extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        user_name = navigationView.getHeaderView(0).findViewById(R.id.user_name_id);
+        user_email = navigationView.getHeaderView(0).findViewById(R.id.user_email_id);
+        user_image = navigationView.getHeaderView(0).findViewById(R.id.user_image_id);
+
+        user_name.setText(User_name);
+        user_email.setText(User_email);
+        user_image.setImageResource(R.drawable.muscle);
     }
 
     @Override
@@ -55,7 +79,6 @@ public class Activity_Main extends AppCompatActivity
     }
 
 
-
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -63,10 +86,10 @@ public class Activity_Main extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_slideshow) {
-            startActivity(new Intent(Activity_Main.this,Activity_slideshow.class));
+            startActivity(new Intent(Activity_Main.this, Activity_slideshow.class));
 
         } else if (id == R.id.nav_fav) {
-            startActivity(new Intent(Activity_Main.this,Activity_Favourite.class));
+            startActivity(new Intent(Activity_Main.this, Activity_Favourite.class));
 
         } else if (id == R.id.nav_share) {
 
@@ -80,7 +103,7 @@ public class Activity_Main extends AppCompatActivity
         } else if (id == R.id.nav_send) {
             Intent intent = new Intent(Intent.ACTION_SEND);
 
-            intent.putExtra(Intent.EXTRA_EMAIL,"Hind_Ahmed31@hotmail.com");
+            intent.putExtra(Intent.EXTRA_EMAIL, "Hind_Ahmed31@hotmail.com");
             intent.putExtra(Intent.EXTRA_SUBJECT, "Feedback");
             intent.setType("message/rfc822");
             startActivity(Intent.createChooser(intent, "Select Email Sending App :"));
