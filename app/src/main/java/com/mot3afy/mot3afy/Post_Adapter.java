@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.Collections;
 import java.util.List;
 
 import static android.R.attr.mode;
@@ -26,7 +27,6 @@ public class Post_Adapter extends BaseAdapter {
         this.context = context;
         this.posts = posts;
     }
-
 
     @Override
     public int getCount() {

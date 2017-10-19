@@ -33,6 +33,8 @@ import com.mot3afy.mot3afy.PrefManager;
 import com.mot3afy.mot3afy.R;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -60,14 +62,13 @@ public class Activity_Main extends AppCompatActivity
         setContentView(R.layout.activity__main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        toolbar.setTitle("Public Posts");
 
         prefManager = new PrefManager(this);
         User_email = prefManager.getUser_email();
         User_id = prefManager.getUser_id();
         User_name = prefManager.getUser_name();
         Log.d("data",User_id+User_name+User_email);
-
-
 
 
         listView = (ListView) findViewById(R.id.List_of_all_posts);
@@ -132,7 +133,9 @@ public class Activity_Main extends AppCompatActivity
     }
 
     private void update_posts() {
-         post_adapter = new Post_Adapter(this, post_s);
+
+        Collections.reverse(post_s);
+        post_adapter = new Post_Adapter(this, post_s);
         listView.setAdapter(post_adapter);
 
     }
