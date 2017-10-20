@@ -11,7 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp">
+        tools:layout_editor_absoluteY="8dp"
+        android:id="@+id/linearLayout">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
@@ -35,7 +36,13 @@
                 android:text="@string/favourite_stories"
                 android:textSize="20dp"
                 android:textColor="@android:color/white"/>
-
         </android.support.v7.widget.Toolbar>
+
     </LinearLayout>
+    <ListView
+        android:id="@+id/List_of_fav_posts"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/linearLayout">
+    </ListView>
     </RelativeLayout>

@@ -23,10 +23,10 @@
         android:layout_height="40dp"
         android:hint="your Last disease"
         android:inputType="text"
-        android:textAlignment="center"
+        android:textAlignment="textStart"
         android:textColor="@android:color/white"
         android:textColorHint="@android:color/darker_gray"
-        android:textSize="18sp" />
+        android:textSize="13sp" />
 
     <EditText
         android:id="@+id/editTextDialogUserInput"
@@ -37,6 +37,7 @@
         android:textColor="@android:color/white"
         android:textColorHint="@android:color/darker_gray"
         android:textSize="18sp">
+
 
     </EditText>
 

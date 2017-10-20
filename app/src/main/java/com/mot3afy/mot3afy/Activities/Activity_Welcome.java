@@ -28,7 +28,7 @@ public class Activity_Welcome extends AppCompatActivity {
     private TextView[] dots;
     private int[] layouts;
     private Button btnSkip, btnNext;
-    static PrefManager prefManager;
+    public static PrefManager prefManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

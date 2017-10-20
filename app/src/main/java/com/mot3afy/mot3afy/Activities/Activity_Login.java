@@ -135,16 +135,13 @@ public class Activity_Login extends AppCompatActivity {
 
     private void updateUI(FirebaseUser currentUser) {
 
-        Toast.makeText(Activity_Login.this, "id" + currentUser.getUid() + "///name" + currentUser.getDisplayName(),
-                Toast.LENGTH_SHORT).show();
-
-        writeNewUser(currentUser.getUid(),currentUser.getDisplayName(),currentUser.getEmail());
+               writeNewUser(currentUser.getUid(),currentUser.getDisplayName(),currentUser.getEmail());
 
     }
 
     private void writeNewUser(String userId, String userName, String userEmail) {
         User user = new User(userName, userEmail);
-        mDatabase.child("Users").child(userId).setValue(user);
+        mDatabase.child("Users").child(userId).child("User_data").setValue(user);
         prefManager.setUserData(userId,userName,userEmail);
         startActivity(new Intent(Activity_Login.this,Activity_Main.class));
 

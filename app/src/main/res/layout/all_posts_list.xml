@@ -33,7 +33,7 @@
             android:textSize="20dp" />
 
         <ImageView
-            android:id="@+id/post_fav"
+            android:id="@+id/post_fav_id"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight=".35"
