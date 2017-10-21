@@ -48,7 +48,7 @@ public class Activity_Main extends AppCompatActivity
     private TextView user_name;
     private TextView user_email;
     private ImageView user_image;
-   // private PrefManager prefManager;
+    // private PrefManager prefManager;
     String User_email, User_id, User_name;
     DatabaseReference mFirebaseDatabase_Posts ;
     private ListView listView ;

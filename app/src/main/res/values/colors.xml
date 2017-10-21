@@ -48,4 +48,7 @@
         <item>@color/dot_dark_screen4</item>
     </array>
 
+
+    <color name="shadow">#555555</color>
+    <color name="title">#777777</color>
 </resources>
