@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
 import com.mot3afy.mot3afy.Adapters.MyViewPagerAdapter;
 import com.mot3afy.mot3afy.PrefManager;
 import com.mot3afy.mot3afy.R;
@@ -174,5 +175,10 @@ public class Activity_Welcome extends AppCompatActivity {
             window.setStatusBarColor(Color.TRANSPARENT);
         }
     }
+    @Override
+    protected void onStart() {
+        super.onStart();
+    }
+
 }
 

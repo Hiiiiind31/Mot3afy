@@ -86,7 +86,7 @@ public class Activity_Main extends AppCompatActivity
         listView = (ListView) findViewById(R.id.List_of_all_posts);
 
         mFirebaseDatabase_Posts = FirebaseDatabase.getInstance().getReference("Posts");
-
+        mFirebaseDatabase_Posts.keepSynced(true);
 
         // Creating and Configuring Google Sign In object.
          googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)

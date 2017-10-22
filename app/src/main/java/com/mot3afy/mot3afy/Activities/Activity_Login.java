@@ -51,7 +51,7 @@ public class Activity_Login extends AppCompatActivity {
         signInButton = (com.google.android.gms.common.SignInButton) findViewById(R.id.sign_in_button);
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
-
+        mDatabase.keepSynced(true);
         //prefManager = new PrefManager(this);
 
         // Creating and Configuring Google Sign In object.

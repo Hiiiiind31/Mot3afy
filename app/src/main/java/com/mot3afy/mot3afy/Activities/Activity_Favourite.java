@@ -33,6 +33,7 @@ public class Activity_Favourite extends AppCompatActivity {
 
         listView = (ListView) findViewById(R.id.List_of_fav_posts);
         mFirebaseDatabase_users = FirebaseDatabase.getInstance().getReference("Users").child(prefManager.getUser_id());
+        mFirebaseDatabase_users.keepSynced(true);
 
         mFirebaseDatabase_users.child("user-fav-posts").addValueEventListener(new ValueEventListener() {
             long childrenCount;

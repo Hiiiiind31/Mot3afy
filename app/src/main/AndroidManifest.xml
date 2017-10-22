@@ -8,6 +8,7 @@
         android:icon="@drawable/muscle"
         android:label="@string/app_name"
         android:supportsRtl="true"
+        android:name=".Mot3afy"
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity android:name=".Activities.Activity_Welcome">
             <intent-filter>
