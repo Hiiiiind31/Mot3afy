@@ -1,6 +1,5 @@
 package com.mot3afy.mot3afy.Activities;
 
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -30,14 +29,13 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.Result;
 import com.google.android.gms.common.api.ResultCallback;
-import com.google.android.gms.common.api.Status;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.mot3afy.mot3afy.Activities.Models.Post;
+import com.mot3afy.mot3afy.Models.Post;
 import com.mot3afy.mot3afy.Adapters.Post_Adapter;
 import com.mot3afy.mot3afy.PrefManager;
 import com.mot3afy.mot3afy.R;

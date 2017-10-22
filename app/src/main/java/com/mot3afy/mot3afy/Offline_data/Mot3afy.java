@@ -1,4 +1,4 @@
-package com.mot3afy.mot3afy;
+package com.mot3afy.mot3afy.Offline_data;
 
 import android.app.Application;
 
@@ -13,8 +13,6 @@ public class Mot3afy extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-
         FirebaseDatabase.getInstance().setPersistenceEnabled(true);
-
     }
 }

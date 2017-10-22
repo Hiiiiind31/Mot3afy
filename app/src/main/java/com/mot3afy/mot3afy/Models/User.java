@@ -1,4 +1,4 @@
-package com.mot3afy.mot3afy.Activities.Models;
+package com.mot3afy.mot3afy.Models;
 
 /**
  * Created by Hind on 10/18/2017.

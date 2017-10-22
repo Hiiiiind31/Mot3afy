@@ -48,6 +48,7 @@
         android:paddingBottom="20dp"
         android:paddingTop="20dp"
         android:text="@string/next"
+        android:textStyle="bold"
         android:textColor="@android:color/white"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp" />
@@ -62,6 +63,7 @@
         android:paddingBottom="20dp"
         android:paddingTop="20dp"
         android:text="@string/skip"
+        android:textStyle="bold"
         android:textColor="@android:color/white"
         tools:layout_editor_absoluteX="0dp"
         tools:layout_editor_absoluteY="0dp" />

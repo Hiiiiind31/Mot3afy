@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.mot3afy.mot3afy.Activities.Models.Post;
+import com.mot3afy.mot3afy.Models.Post;
 import com.mot3afy.mot3afy.R;
 
 import java.util.HashMap;

@@ -8,17 +8,14 @@
     <string name="Google_sign_in">Google Signin</string>
     <string name="sign_in">______Sign in______</string>
 
-    <string name="slide_1_title">Hello Food!</string>
-    <string name="slide_1_desc">The easiest way to order food from your favourite restaurant!</string>
-
-    <string name="slide_3_title">Movie Tickets</string>
-    <string name="slide_3_desc">Book movie tickets for your family and friends!</string>
-
     <string name="slide_2_title">Yes you can</string>
-    <string name="slide_2_desc">Think good for Allah!</string>
+    <string name="slide_2_desc">Trust in Allah</string>
+
+    <string name="slide_3_title">Support </string>
+    <string name="slide_3_desc"> Sharing your previous problem enables you to support others.</string>
 
     <string name="slide_4_title">Lets go</string>
-    <string name="slide_4_desc">Hurry up and join to us!</string>
+    <string name="slide_4_desc">Hurry up , join to us and share your story.</string>
 
     <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
     <string name="play_again">Play Again</string>
@@ -29,13 +26,14 @@
 
     <string name="action_settings">Settings</string>
     <string name="favourite_stories">Favourite Stories</string>
-    <string name="slideshow">SlideShow</string>
+    <string name="slideshow">Motivational Videos</string>
 
-    <string name="title_logo">NATIONAL GEOGRAPHIC</string>
-    <string name="btn_skip_intro">Skip Intro</string>
     <string name="error_player">There was an error initializing the YouTubePlayer (%1$s)</string>
     <string name="player_error">Error initializing YouTube player: %s</string>
-    <string name="Log_out">Log out</string>
 
+    <string name="Log_out">Log out</string>
+    <string name="Share">Share App.</string>
+    <string name="Slideshow">Motivational Videos</string>
+    <string name="Send">Send Feedback</string>
 
 </resources>

@@ -14,7 +14,7 @@
             android:layout_width="@dimen/img_width_height"
             android:layout_height="@dimen/img_width_height"
             android:onClick="main"
-            android:src="@drawable/medal" />
+            android:src="@drawable/muscle" />
 
         <TextView
             android:layout_width="wrap_content"

@@ -1,4 +1,4 @@
-package com.mot3afy.mot3afy.Activities.Models;
+package com.mot3afy.mot3afy.Models;
 
 import com.google.firebase.database.Exclude;
 

@@ -15,7 +15,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.mot3afy.mot3afy.Activities.Models.Post;
+import com.mot3afy.mot3afy.Models.Post;
 import com.mot3afy.mot3afy.R;
 
 import java.util.List;
