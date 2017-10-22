@@ -27,13 +27,12 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.mot3afy.mot3afy.Post;
-import com.mot3afy.mot3afy.Post_Adapter;
+import com.mot3afy.mot3afy.Activities.Models.Post;
+import com.mot3afy.mot3afy.Adapters.Post_Adapter;
 import com.mot3afy.mot3afy.PrefManager;
 import com.mot3afy.mot3afy.R;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -227,18 +226,17 @@ public class Activity_Main extends AppCompatActivity
         } else if (id == R.id.nav_fav) {
             startActivity(new Intent(Activity_Main.this, Activity_Favourite.class));
 
-        } else if (id == R.id.nav_share) {
-
-            Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
-            sharingIntent.setType("text/plain");
-            sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "APP NAME (Open it in Google Play Store to Download the Application)");
-
-            sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, "https://play.google.com/store/apps/details?id=com.whatsapp");
-            startActivity(Intent.createChooser(sharingIntent, "Share via"));
+//        } else if (id == R.id.nav_share) {
+//            Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+//            sharingIntent.setType("text/plain");
+//            sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "APP NAME (Open it in Google Play Store to Download the Application)");
+//
+//            sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, "https://play.google.com/store/apps/details?id=com.whatsapp");
+//            startActivity(Intent.createChooser(sharingIntent, "Share via"));
 
         } else if (id == R.id.nav_send) {
-            Intent intent = new Intent(Intent.ACTION_SEND);
 
+            Intent intent = new Intent(Intent.ACTION_SEND);
             intent.putExtra(Intent.EXTRA_EMAIL, "Hind_Ahmed31@hotmail.com");
             intent.putExtra(Intent.EXTRA_SUBJECT, "Feedback");
             intent.setType("message/rfc822");

@@ -23,9 +23,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.mot3afy.mot3afy.PrefManager;
 import com.mot3afy.mot3afy.R;
-import com.mot3afy.mot3afy.User;
+import com.mot3afy.mot3afy.Activities.Models.User;
 
 import static com.mot3afy.mot3afy.Activities.Activity_Welcome.prefManager;
 

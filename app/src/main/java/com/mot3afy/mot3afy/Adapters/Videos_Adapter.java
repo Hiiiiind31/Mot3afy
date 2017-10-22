@@ -1,4 +1,4 @@
-package com.mot3afy.mot3afy;
+package com.mot3afy.mot3afy.Adapters;
 
 import android.app.Activity;
 import android.content.Context;
@@ -12,12 +12,15 @@ import android.widget.TextView;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
+import com.mot3afy.mot3afy.Config;
+import com.mot3afy.mot3afy.R;
+import com.mot3afy.mot3afy.Videos_interface;
 
 /**
  * Created by Hind on 10/21/2017.
  */
 
-public class Videos_Adapter extends BaseAdapter implements YouTubePlayer.OnInitializedListener, Videos_interface   {
+public class Videos_Adapter extends BaseAdapter implements YouTubePlayer.OnInitializedListener, Videos_interface {
 
     Context context;
     String[] Video;

@@ -1,4 +1,4 @@
-package com.mot3afy.mot3afy;
+package com.mot3afy.mot3afy.Adapters;
 
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;

@@ -16,7 +16,7 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.mot3afy.mot3afy.MyViewPagerAdapter;
+import com.mot3afy.mot3afy.Adapters.MyViewPagerAdapter;
 import com.mot3afy.mot3afy.PrefManager;
 import com.mot3afy.mot3afy.R;
 

@@ -2,18 +2,15 @@ package com.mot3afy.mot3afy.Activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.mot3afy.mot3afy.Fav_post_Adapter;
-import com.mot3afy.mot3afy.Post;
-import com.mot3afy.mot3afy.Post_Adapter;
+import com.mot3afy.mot3afy.Adapters.Fav_post_Adapter;
+import com.mot3afy.mot3afy.Activities.Models.Post;
 import com.mot3afy.mot3afy.R;
 
 import java.util.ArrayList;

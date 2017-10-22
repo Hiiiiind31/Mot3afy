@@ -1,22 +1,12 @@
 package com.mot3afy.mot3afy.Activities;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.view.WindowManager;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.youtube.player.YouTubeBaseActivity;
-import com.google.android.youtube.player.YouTubeInitializationResult;
-import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
-import com.mot3afy.mot3afy.Config;
 import com.mot3afy.mot3afy.R;
-import com.mot3afy.mot3afy.Videos_Adapter;
+import com.mot3afy.mot3afy.Adapters.Videos_Adapter;
 
 public class Activity_slideshow extends  YouTubeBaseActivity {
 
