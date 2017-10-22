@@ -47,6 +47,7 @@ public class Activity_Welcome extends AppCompatActivity {
         } else {
             // No user is signed in
             startActivity(new Intent(Activity_Welcome.this,Activity_Main.class));
+            finish();
         }
 
 

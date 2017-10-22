@@ -35,6 +35,7 @@
     <string name="btn_skip_intro">Skip Intro</string>
     <string name="error_player">There was an error initializing the YouTubePlayer (%1$s)</string>
     <string name="player_error">Error initializing YouTube player: %s</string>
+    <string name="Log_out">Log out</string>
 
 
 </resources>

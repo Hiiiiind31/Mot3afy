@@ -1,8 +1,10 @@
 package com.mot3afy.mot3afy.Activities;
 
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
@@ -22,6 +24,14 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.Result;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -53,8 +63,9 @@ public class Activity_Main extends AppCompatActivity
     private ListView listView ;
     private List<Post> post_s = new ArrayList<>();
     private Post_Adapter post_adapter ;
-
-
+    FirebaseAuth mAuth ;
+    GoogleSignInOptions googleSignInOptions ;
+    GoogleApiClient googleApiClient ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,9 +81,28 @@ public class Activity_Main extends AppCompatActivity
         Log.d("data",User_id+User_name+User_email);
 
 
+        mAuth = FirebaseAuth.getInstance();
+
         listView = (ListView) findViewById(R.id.List_of_all_posts);
 
         mFirebaseDatabase_Posts = FirebaseDatabase.getInstance().getReference("Posts");
+
+
+        // Creating and Configuring Google Sign In object.
+         googleSignInOptions = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
+
+        // Creating and Configuring Google Api Client.
+         googleApiClient = new GoogleApiClient.Builder(Activity_Main.this)
+                .enableAutoManage(Activity_Main.this, new GoogleApiClient.OnConnectionFailedListener() {
+                    @Override
+                    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+                    }
+                } /* OnConnectionFailedListener */)
+                .addApi(Auth.GOOGLE_SIGN_IN_API, googleSignInOptions)
+                .build();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -241,6 +271,24 @@ public class Activity_Main extends AppCompatActivity
             intent.putExtra(Intent.EXTRA_SUBJECT, "Feedback");
             intent.setType("message/rfc822");
             startActivity(Intent.createChooser(intent, "Select Email Sending App :"));
+        } else if (id==R.id.logout){
+
+            // Sing Out the User.
+            mAuth.signOut();
+
+
+            Auth.GoogleSignInApi.signOut(googleApiClient).setResultCallback(
+                    new ResultCallback() {
+                        @Override
+                        public void onResult(@NonNull Result result) {
+                            Toast.makeText(Activity_Main.this, "Logout Successfully", Toast.LENGTH_LONG).show();
+                            prefManager.setUserData("","","");
+                            startActivity(new Intent(Activity_Main.this,Activity_Login.class));
+                            finish();
+                        }
+
+                    });
+
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

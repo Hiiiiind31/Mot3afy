@@ -143,6 +143,8 @@ public class Activity_Login extends AppCompatActivity {
         mDatabase.child("Users").child(userId).child("User_data").setValue(user);
         prefManager.setUserData(userId,userName,userEmail);
         startActivity(new Intent(Activity_Login.this,Activity_Main.class));
+        finish();
+
 
     }
 

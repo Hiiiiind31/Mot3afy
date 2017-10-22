@@ -31,6 +31,15 @@
         </menu>
     </item>
 
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/logout"
+            android:icon="@drawable/ic_exit_to_app_black_24dp"
+            android:iconTint="@android:color/white"
+            android:title="@string/Log_out" />
+    </group>
+
 
 
 </menu>
