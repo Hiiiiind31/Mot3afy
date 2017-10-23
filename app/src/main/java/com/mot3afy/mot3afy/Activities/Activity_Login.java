@@ -1,6 +1,7 @@
 package com.mot3afy.mot3afy.Activities;
 
 import android.content.Intent;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -78,6 +79,10 @@ public class Activity_Login extends AppCompatActivity {
 
             }
         });
+        if (!isInternetOn()){
+            Toast.makeText(Activity_Login.this, " no internet connections"   ,
+                    Toast.LENGTH_SHORT).show();
+        }
 
     }
 
@@ -102,13 +107,17 @@ public class Activity_Login extends AppCompatActivity {
             } else {
                 // Google Sign In failed, update UI appropriately
                 // ...
+                if (!isInternetOn()){
+                    Toast.makeText(Activity_Login.this, "Authentication failed,no internet connection"   ,
+                            Toast.LENGTH_SHORT).show();
+                }
             }
         }
     }
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {
-        Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId());
 
+        Log.d(TAG, "firebaseAuthWithGoogle:" + acct.getId());
         AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -122,8 +131,11 @@ public class Activity_Login extends AppCompatActivity {
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
-                            Toast.makeText(Activity_Login.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
+                            if (!isInternetOn()){
+                                Toast.makeText(Activity_Login.this, "Authentication failed.  no internet connections"   ,
+                                        Toast.LENGTH_SHORT).show();
+                            }
+
                             updateUI(null);
                         }
                     }
@@ -153,4 +165,30 @@ public class Activity_Login extends AppCompatActivity {
         startActivity(new Intent(Activity_Login.this, Activity_Main.class));
 
     }
+
+    public  boolean isInternetOn() {
+        // get Connectivity Manager object to check connection
+        ConnectivityManager connec =
+                (ConnectivityManager) getSystemService(getBaseContext().CONNECTIVITY_SERVICE);
+
+        // Check for network connections
+        if (connec.getNetworkInfo(0).getState() == android.net.NetworkInfo.State.CONNECTED ||
+                connec.getNetworkInfo(0).getState() == android.net.NetworkInfo.State.CONNECTING ||
+                connec.getNetworkInfo(1).getState() == android.net.NetworkInfo.State.CONNECTING ||
+                connec.getNetworkInfo(1).getState() == android.net.NetworkInfo.State.CONNECTED) {
+
+            // if connected with internet
+
+            return true;
+
+        } else if (
+                connec.getNetworkInfo(0).getState() == android.net.NetworkInfo.State.DISCONNECTED ||
+                        connec.getNetworkInfo(1).getState() == android.net.NetworkInfo.State.DISCONNECTED) {
+
+            return false;
+        }
+        return false;
+    }
+
 }
+

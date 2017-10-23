@@ -21,22 +21,22 @@
         android:id="@+id/Hashtag"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:hint="your Last disease"
+        android:hint="@string/Recuperated_from_what"
         android:inputType="text"
         android:textAlignment="textStart"
         android:textColor="@android:color/white"
         android:textColorHint="@android:color/darker_gray"
-        android:textSize="13sp" />
+        android:textSize="15sp" />
 
     <EditText
         android:id="@+id/editTextDialogUserInput"
         android:layout_width="match_parent"
         android:layout_height="178dp"
-        android:hint="Your Story"
+        android:hint="@string/Your_Story"
         android:inputType="textMultiLine"
         android:textColor="@android:color/white"
         android:textColorHint="@android:color/darker_gray"
-        android:textSize="18sp">
+        android:textSize="16sp">
 
 
     </EditText>

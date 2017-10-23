@@ -1,7 +1,9 @@
 package com.mot3afy.mot3afy.Activities;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ListView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -67,6 +69,11 @@ public class Activity_Favourite extends AppCompatActivity {
         fav_post_adapter = new Fav_post_Adapter(this, post_s);
         listView.setAdapter(fav_post_adapter);
 
+    }
+
+    public void get_back2(View v){
+        startActivity(new Intent(Activity_Favourite.this,Activity_Main.class));
+        finish();
     }
 
 }

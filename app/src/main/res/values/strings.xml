@@ -35,5 +35,7 @@
     <string name="Share">Share App.</string>
     <string name="Slideshow">Motivational Videos</string>
     <string name="Send">Send Feedback</string>
+    <string name="Recuperated_from_what">Recuperated from what ?</string>
+    <string name="Your_Story">Your Story</string>
 
 </resources>

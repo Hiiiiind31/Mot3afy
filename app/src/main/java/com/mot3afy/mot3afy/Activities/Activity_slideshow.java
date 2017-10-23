@@ -1,6 +1,8 @@
 package com.mot3afy.mot3afy.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ListView;
 
 import com.google.android.youtube.player.YouTubeBaseActivity;
@@ -32,4 +34,9 @@ public class Activity_slideshow extends  YouTubeBaseActivity {
         listView.setAdapter(adapter);
 
     }
+    public void get_back1(View v){
+        startActivity(new Intent(Activity_slideshow.this,Activity_Main.class));
+        finish();
+    }
 }
+

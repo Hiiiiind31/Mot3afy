@@ -2,6 +2,7 @@ package com.mot3afy.mot3afy.Activities;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -146,8 +147,12 @@ public class Activity_Main extends AppCompatActivity
                 }
                 int size = post_s.size();
                 update_posts();
-                Toast.makeText(Activity_Main.this, childrenCount + "//" + value + "", Toast.LENGTH_LONG).show();
-                Toast.makeText(Activity_Main.this, size + "", Toast.LENGTH_LONG).show();
+
+                if (!isInternetOn()){
+                    Toast.makeText(Activity_Main.this, " no internet connection"   ,
+                            Toast.LENGTH_SHORT).show();
+                }
+
             }
 
             @Override
@@ -216,6 +221,12 @@ public class Activity_Main extends AppCompatActivity
 
 
     private void writeNewPost(String userId, String username, String title, String body, int fav) {
+
+        if (!isInternetOn()){
+            Toast.makeText(Activity_Main.this, " no internet connection"   ,
+                    Toast.LENGTH_SHORT).show();
+        }
+
         // Create new post at /user-posts/$userid/$postid and at
         // /posts/$postid simultaneously
         String key = mFirebaseDatabase_Posts.push().getKey();
@@ -293,4 +304,29 @@ public class Activity_Main extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    public  boolean isInternetOn() {
+        // get Connectivity Manager object to check connection
+        ConnectivityManager connec =
+                (ConnectivityManager) getSystemService(getBaseContext().CONNECTIVITY_SERVICE);
+
+        // Check for network connections
+        if (connec.getNetworkInfo(0).getState() == android.net.NetworkInfo.State.CONNECTED ||
+                connec.getNetworkInfo(0).getState() == android.net.NetworkInfo.State.CONNECTING ||
+                connec.getNetworkInfo(1).getState() == android.net.NetworkInfo.State.CONNECTING ||
+                connec.getNetworkInfo(1).getState() == android.net.NetworkInfo.State.CONNECTED) {
+
+            // if connected with internet
+
+            return true;
+
+        } else if (
+                connec.getNetworkInfo(0).getState() == android.net.NetworkInfo.State.DISCONNECTED ||
+                        connec.getNetworkInfo(1).getState() == android.net.NetworkInfo.State.DISCONNECTED) {
+
+            return false;
+        }
+        return false;
+    }
 }
+
